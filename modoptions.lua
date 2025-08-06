@@ -280,7 +280,34 @@ local options = {
 		section	= "options_main",
 		column	= 1,
 	},
-	{
+    {
+        key		= "unit_sharing_mode",
+        name	= "Unit Sharing Mode",
+        desc	= "Restrictions on how units can be shared",
+        type	= "list",
+        def		= "enable_all",
+        section	= "options_main",
+        items	= {
+            { key= "enable_all", name= "Normal Unit Sharing", desc="Allow all units to be shared"},
+            { key= "stun_econ_and_lab_sharing", name= "EMP only Economy and Lab units", 	desc="Sharing of economy and labs (including mobile engineers) involves an EMP stun as the unit is transfered."},
+            { key= "stun_all", name= "EMP any transfered unit", desc="Transfering any unit involves an EMP stun as the unit is transfered"},
+            { key= "disable_all", name= "Disable Unit Sharing", desc="Disable all unit sharing"},
+        }
+    },
+    {
+        key    	= "unit_sharing_stun_seconds",
+        name   	= "Unit Sharing EMP duration".."\255\128\128\128".." [seconds]",
+        desc   	= "Duration of Unit Sharing EMP (in seconds)\n"..
+					"Set to [0] to turn off. Range: 0 - 60 seconds",
+        type   	= "number",
+        section	= "options_main",
+        def    	= 0,
+        min    	= 0,
+        max    	= 60,
+        step   	= 1,
+        column	= 1,
+    },
+    {
 		key		= "disable_unit_sharing",
 		name	= "Disable Unit Sharing",
 		desc	= "Disable sharing units and structures to allies",

@@ -47,6 +47,10 @@ local GetPlayerList = Spring.GetPlayerList
 local GetPlayerInfo = Spring.GetPlayerInfo
 local GetGameRulesParam = Spring.GetGameRulesParam
 local GetViewGeometry = Spring.GetViewGeometry
+local GetUnitHealth = Spring.GetUnitHealth
+local SetUnitHealth = Spring.SetUnitHealth
+local Echo = Spring.Echo
+
 
 local glBeginEnd = gl.BeginEnd
 local glCallList = gl.CallList
@@ -321,6 +325,12 @@ function widget:DrawScreen()
 	drawName(selectedTeam)
 end
 
+local function stunUnit(unitID)
+  local health, maxHealth, paralyzeDamage, captureProgress, buildProgress = GetUnitHealth(unitID)
+  local stunDuration = maxHealth + ((maxHealth/30))
+  SetUnitHealth(unitID, {health = health, paralyze = stunDuration})
+end 
+
 function widget:CommandNotify(cmdID, cmdParams, _)
 	if cmdID == cmdQuickShareToTargetId then
 		local targetTeamID
@@ -341,6 +351,8 @@ function widget:CommandNotify(cmdID, cmdParams, _)
 			return true
 		end
 
+		Echo(cmdID)
+		Echo(cmdParams)
 		ShareResources(targetTeamID, "units")
 		PlaySoundFile("beep4", 1, 'ui')
 		return false
