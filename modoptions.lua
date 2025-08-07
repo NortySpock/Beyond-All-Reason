@@ -281,23 +281,22 @@ local options = {
 		column	= 1,
 	},
     {
-        key		= "unit_sharing_mode",
-        name	= "Unit Sharing Mode",
-        desc	= "Restrictions on how units can be shared",
+        key		= "disable_unit_after_sharing",
+        name	= "Disable Units After Sharing",
+        desc	= "Sets which unit classes will be disabled after sharing to a teammate.",
         type	= "list",
-        def		= "enable_all",
+        def		= "off",
         section	= "options_main",
         items	= {
-            { key= "enable_all", name= "Normal Unit Sharing", desc="Allow all units to be shared"},
-            { key= "stun_econ_and_lab_sharing", name= "EMP only Economy and Lab units", 	desc="Sharing of economy and labs (including mobile engineers) involves an EMP stun as the unit is transfered."},
-            { key= "stun_all", name= "EMP any transfered unit", desc="Transfering any unit involves an EMP stun as the unit is transfered"},
-            { key= "disable_all", name= "Disable Unit Sharing", desc="Disable all unit sharing"},
+            { key= "off", name= "Normal Unit Sharing", desc="Allow all shared units to be used immediately."},
+            { key= "eco_and_con_units", name= "Economy and Construction Units", 	desc="Sharing of economy, factory, and all construction units temporarily disables the unit for several seconds."},
+            { key= "all", name= "All transfered units", desc="Sharing any unit temporarily disables the unit for several seconds."},
         }
     },
     {
-        key    	= "unit_sharing_stun_seconds",
-        name   	= "Unit Sharing EMP duration".."\255\128\128\128".." [seconds]",
-        desc   	= "Duration of Unit Sharing EMP (in seconds)\n"..
+        key    	= "disable_units_after_transfer_duration_seconds",
+        name   	= "Duration to disable units after transfer".."\255\128\128\128".." [seconds]",
+        desc   	= "The amount of time units will be disabled after transfer (in seconds)\n"..
 					"Set to [0] to turn off. Range: 0 - 60 seconds",
         type   	= "number",
         section	= "options_main",
