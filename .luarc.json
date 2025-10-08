@@ -24,8 +24,7 @@
       ".vscode",
       "luaui/Tests",
       "luaui/TestsExamples"
-    ],
-    "checkThirdParty": false
+    ]
   },
   "diagnostics": {
     "globals": [
@@ -38,19 +37,11 @@
       "GG",
       "WG",
       "gadgetHandler",
-      "widgetHandler",
-      // specs/busted
-      "describe",
-      "it",
-      "before_each",
-      "after_each",
-      "setup",
-      "teardown",
-      "assert"
+      "widgetHandler"
     ],
     "type": {
       "definition": [
-        "luaui/types/",
+        "luaui/types/"
       ]
     }
   },
