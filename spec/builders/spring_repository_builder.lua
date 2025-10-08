@@ -215,18 +215,8 @@ function SpringRepositoryBuilder:BuildSpringRepository()
             RECLAIM = 90
         },
         GetModOptions = function()
-            -- Start with comprehensive defaults, then override with explicitly set mod options
-            local defaults = getUnitDefRequireModoptionDefaults()
-            local modOptions = {}
-            -- Copy defaults
-            for k, v in pairs(defaults) do
-                modOptions[k] = v
-            end
-            -- Override with any mod options that were explicitly set via WithModOption
-            for k, v in pairs(instance.modOptions) do
-                modOptions[k] = v
-            end
-            return modOptions
+            -- Return only the mod options that were explicitly set via WithModOption/WithModOptions
+            return instance.modOptions
         end,
         GetGameFrame = function()
             return instance.gameFrame
