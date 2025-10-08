@@ -49,32 +49,41 @@ More on the `.sdd` directory to run raw LUA and the structure expected by Spring
 
 #### Unit Testing
 
-##### Install luarocks:
+##### Install Lua 5.1 and LuaRocks
 
 *debian/linux*
 
 ```zsh
-apt install -y lua5.1 luarocks
+sudo apt install -y lua5.1 luarocks
 ```
-*windows* (inside mysys2)
+*windows* (MSYS2, use UCRT64)
 
 ```zsh
+pacman -S --needed mingw-w64-x86_64-lua51 mingw-w64-ucrt-x86_64-luarocks
 ```
 *osx*
 
 ```zsh
-brew install luarocks
+brew install lua@5.1 luarocks
 ```
 
-##### install busted (test runner) and inspect (pretty printer):
+##### Install test tools
+
+Required (test runner):
 
 ```zsh
-luarocks --lua-version=5.1 install busted inspect
+luarocks --lua-version=5.1 install busted
+```
+Optional (pretty printer for output debugging):
+
+```zsh
+luarocks --lua-version=5.1 install inspect
 ```
 
 ##### Running specs
 
 All specs:
+
 ```zsh
 busted
 ```
