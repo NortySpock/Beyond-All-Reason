@@ -21,7 +21,7 @@ return {
 		metalcost = 560,
 		movementclass = "BOT3",
 		nochasecategory = "VTOL",
-		objectname = "Units/CORCAN.s3o",
+		objectname = "Units/corcan.s3o",
 		script = "Units/corcan.cob",
 		seismicsignature = 0,
 		selfdestructas = "mediumExplosionGenericSelfd",

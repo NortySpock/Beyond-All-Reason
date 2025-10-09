@@ -20,7 +20,7 @@ return {
 		maxslope = 12,
 		maxwaterdepth = 0,
 		metalcost = 4500,
-		objectname = "Units/ARMBRTHA.s3o",
+		objectname = "Units/armbrtha.s3o",
 		script = "Units/armbrtha.cob",
 		seismicsignature = 0,
 		selfdestructas = "hugeBuildingExplosionGenericSelfd",

@@ -23,7 +23,7 @@ return {
 		movementclass = "HBOT4",
 		movestate = 0,
 		nochasecategory = "VTOL",
-		objectname = "Units/CORCAT.s3o",
+		objectname = "Units/corcat.s3o",
 		script = "Units/corcat.cob",
 		seismicsignature = 0,
 		selfdestructas = "explosiont3xl",

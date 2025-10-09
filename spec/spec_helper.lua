@@ -69,12 +69,34 @@ _G.VFS.Include = function(path, env, mode)
 end
 
 _G.VFS.FileExists = function(path)
-    -- For testing, check if the file actually exists on disk
+    -- Fast path: exact match
     local file = io.open(path, "r")
     if file then
         file:close()
         return true
     end
+
+    -- Case-insensitive fallback for objects3d assets (Linux CI is case-sensitive)
+    if path:match("^objects3d/") then
+        -- Lazily build a case-insensitive index of all files under objects3d
+        if not _G.VFS._objects3d_index then
+            _G.VFS._objects3d_index = {}
+            local handle = io.popen("find objects3d -type f")
+            if handle then
+                for line in handle:lines() do
+                    _G.VFS._objects3d_index[string.lower(line)] = true
+                end
+                handle:close()
+            end
+        end
+
+        -- Normalize duplicate .s3o extension patterns that can appear in unitdefs checks
+        local normalized = path:gsub("%.s3o%.s3o$", ".s3o")
+        if _G.VFS._objects3d_index[string.lower(normalized)] then
+            return true
+        end
+    end
+
     return false
 end
 

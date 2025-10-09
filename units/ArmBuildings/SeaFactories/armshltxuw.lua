@@ -22,7 +22,7 @@ return {
 		metalcost = 7900,
 		metalstorage = 800,
 		minwaterdepth = 30,
-		objectname = "Units/ARMSHLTX.s3o",
+		objectname = "Units/armshltx.s3o",
 		script = "Units/armshltx.cob",
 		seismicsignature = 0,
 		selfdestructas = "hugeBuildingExplosionGenericSelfd-uw",

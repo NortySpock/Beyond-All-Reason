@@ -28,7 +28,7 @@ return {
 		metalcost = 950,
 		movementclass = "HHOVER4",
 		nochasecategory = "VTOL",
-		objectname = "Units/CORSOK.s3o",
+		objectname = "Units/corsok.s3o",
 		radardistance = 0,
 		script = "Units/corsok.cob",
 		selfdestructas = "hugeExplosionGenericSelfd",

@@ -24,7 +24,7 @@ return {
 		maxwaterdepth = 0,
 		metalcost = 3100,
 		nochasecategory = "MOBILE",
-		objectname = "Units/CORBHMTH.s3o",
+		objectname = "Units/corbhmth.s3o",
 		script = "Units/corbhmth.cob",
 		seismicsignature = 0,
 		selfdestructas = "largeBuildingExplosionGenericSelfd",

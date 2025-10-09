@@ -24,7 +24,7 @@ return {
 		minwaterdepth = 6,
 		movementclass = "BOAT4",
 		nochasecategory = "VTOL UNDERWATER",
-		objectname = "Units/CORFSHIP.s3o",
+		objectname = "Units/corfship.s3o",
 		radardistance = 750,
 		radaremitheight = 52,
 		script = "Units/corfship.cob",

@@ -22,7 +22,7 @@ return {
 		maxslope = 20,
 		maxwaterdepth = 5,
 		metalcost = 1500,
-		objectname = "Units/CORAGEO.s3o",
+		objectname = "Units/corageo.s3o",
 		script = "Units/CORAGEO.lua",
 		seismicsignature = 0,
 		selfdestructas = "advgeo",

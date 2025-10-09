@@ -22,7 +22,7 @@ return {
 		maxwaterdepth = 0,
 		metalcost = 290,
 		nochasecategory = "MOBILE",
-		objectname = "Units/CORMAW.s3o",
+		objectname = "Units/cormaw.s3o",
 		radardistancejam = 8,
 		script = "Units/cormaw.cob",
 		seismicsignature = 0,

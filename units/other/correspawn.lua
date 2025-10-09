@@ -32,7 +32,7 @@ return {
 		maxwaterdepth = 50000000,
 		minwaterdepth = 12,
 		movementclass = "NANO",
-		objectname = "Units/CORRESPAWN.s3o",
+		objectname = "Units/correspawn.s3o",
 		script = "Units/CORNANOT2.cob",
 		seismicsignature = 0,
 		selfdestructas = "commanderExplosion",

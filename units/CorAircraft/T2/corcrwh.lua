@@ -27,7 +27,7 @@ return {
 		maxwaterdepth = 0,
 		metalcost = 5100,
 		nochasecategory = "VTOL",
-		objectname = "Units/CORCRWH.s3o",
+		objectname = "Units/corcrwh.s3o",
 		script = "Units/corcrwh.cob",
 		seismicsignature = 0,
 		selfdestructas = "largeExplosionGenericSelfd",

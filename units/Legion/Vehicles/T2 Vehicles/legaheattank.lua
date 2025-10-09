@@ -23,7 +23,7 @@ return {
 		maxwaterdepth = 15,
 		movementclass = "HTANK4",
 		nochasecategory = "VTOL",
-		objectname = "Units/LEGAHEATTANK.s3o",
+		objectname = "Units/legaheattank.s3o",
 		script = "Units/legaheattank_clean.cob",
 		seismicsignature = 0,
 		selfdestructas = "largeExplosionGenericSelfd",

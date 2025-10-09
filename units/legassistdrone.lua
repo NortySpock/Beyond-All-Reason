@@ -26,7 +26,7 @@ return {
 		speed = 210.0,
 		maxwaterdepth = 0,
 		objectname = "Units/scavboss/CORASSISTDRONE.s3o",
-		script = "Units/CORCA.cob",
+		script = "Units/corca.cob",
 		seismicsignature = 0,
 		selfdestructas = "smallExplosionGenericSelfd",
 		sightdistance = 200,

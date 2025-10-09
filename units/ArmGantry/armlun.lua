@@ -25,7 +25,7 @@ return {
 		metalcost = 1150,
 		movementclass = "HHOVER4",
 		nochasecategory = "VTOL",
-		objectname = "Units/ARMLUN.s3o",
+		objectname = "Units/armlun.s3o",
 		radardistance = 0,
 		script = "Units/armlun.cob",
 		selfdestructas = "largeExplosionGenericSelfd",

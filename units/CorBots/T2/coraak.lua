@@ -21,7 +21,7 @@ return {
 		movementclass = "ABOT2",
 		movestate = 0,
 		nochasecategory = "NOTAIR",
-		objectname = "Units/CORAAK.s3o",
+		objectname = "Units/coraak.s3o",
 		script = "Units/coraak_clean.cob",
 		seismicsignature = 0,
 		selfdestructas = "smallExplosionGenericSelfd-phib",

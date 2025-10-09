@@ -39,7 +39,7 @@ return {
 		mincloakdistance = 50,
 		movementclass = "COMMANDERBOT",
 		nochasecategory = "ALL",
-		objectname = "Units/LEGCOMOFF.s3o",
+		objectname = "Units/legcomoff.s3o",
 		radardistance = 700,
 		radaremitheight = 40,
 		radardistancejam = 100,

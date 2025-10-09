@@ -33,7 +33,7 @@ return {
 		movementclass = "BOAT5",
 		movestate = 0,
 		nochasecategory = "ALL",
-		objectname = "Units/CORANTISHIP.s3o",
+		objectname = "Units/corantiship.s3o",
 		radardistance = 2950,
 		radaremitheight = 56,
 		script = "Units/corantiship.cob",

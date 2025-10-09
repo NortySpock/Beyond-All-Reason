@@ -22,7 +22,7 @@ return {
 		movementclass = "ABOT2",
 		movestate = 0,
 		nochasecategory = "NOTAIR",
-		objectname = "Units/ARMAAK.s3o",
+		objectname = "Units/armaak.s3o",
 		script = "Units/armaak_clean.cob",
 		seismicsignature = 0,
 		selfdestructas = "mediumExplosionGenericSelfd-phib",

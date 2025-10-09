@@ -24,7 +24,7 @@ return {
 		movementclass = "TANK3",
 		movestate = 0,
 		nochasecategory = "VTOL",
-		objectname = "Units/LEGAMCLUSTER.s3o",
+		objectname = "Units/legamcluster.s3o",
 		script = "Units/LEGAMCLUSTER_clean.cob",
 		seismicsignature = 0,
 		selfdestructas = "mediumExplosionGenericSelfd",

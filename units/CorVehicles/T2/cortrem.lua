@@ -24,7 +24,7 @@ return {
 		movementclass = "HTANK4",
 		movestate = 0,
 		nochasecategory = "VTOL",
-		objectname = "Units/CORTREM.s3o",
+		objectname = "Units/cortrem.s3o",
 		script = "Units/cortrem.cob",
 		seismicsignature = 0,
 		selfdestructas = "hugeExplosionGenericSelfd",

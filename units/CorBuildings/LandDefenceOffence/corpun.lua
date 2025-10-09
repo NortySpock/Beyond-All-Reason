@@ -22,7 +22,7 @@ return {
 		maxwaterdepth = 0,
 		metalcost = 1300,
 		nochasecategory = "MOBILE",
-		objectname = "Units/CORPUN.s3o",
+		objectname = "Units/corpun.s3o",
 		script = "Units/armguard.cob",
 		seismicsignature = 0,
 		selfdestructas = "largeBuildingExplosionGenericSelfd",

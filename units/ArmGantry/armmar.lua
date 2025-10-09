@@ -23,7 +23,7 @@ return {
 		metalcost = 970,
 		movementclass = "HABOT5",
 		nochasecategory = "VTOL",
-		objectname = "Units/ARMMAR.s3o",
+		objectname = "Units/armmar.s3o",
 		script = "Units/armmar.cob",
 		seismicsignature = 0,
 		selfdestructas = "explosiont3",

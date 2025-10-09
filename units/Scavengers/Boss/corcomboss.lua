@@ -44,7 +44,7 @@ return {
 		radardistance = 2000,
 		radaremitheight = 100,
 		reclaimable = false,
-		script = "Units/CORCOMBOSS.cob",
+		script = "Units/corcomboss.cob",
 		seismicsignature = 0,
 		selfdestructas = "ScavComBossExplo",
 		selfdestructcountdown = 5,

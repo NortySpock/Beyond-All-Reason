@@ -24,7 +24,7 @@ return {
 		maxwaterdepth = 0,
 		metalcost = 370,
 		nochasecategory = "VTOL",
-		objectname = "Units/CORAPE.s3o",
+		objectname = "Units/corape.s3o",
 		script = "Units/corape.cob",
 		seismicsignature = 0,
 		selfdestructas = "mediumExplosionGenericSelfd",

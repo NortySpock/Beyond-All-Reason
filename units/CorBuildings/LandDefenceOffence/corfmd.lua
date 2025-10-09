@@ -22,7 +22,7 @@ return {
 		maxwaterdepth = 0,
 		metalcost = 1500,
 		noautofire = true,
-		objectname = "Units/CORFMD.s3o",
+		objectname = "Units/corfmd.s3o",
 		radardistance = 50,
 		script = "Units/corfmd.cob",
 		seismicsignature = 0,

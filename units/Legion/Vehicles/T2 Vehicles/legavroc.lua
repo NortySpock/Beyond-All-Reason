@@ -24,7 +24,7 @@ return {
 		movementclass = "HTANK4",
 		movestate = 0,
 		nochasecategory = "MOBILE VTOL",
-		objectname = "Units/LEGAVROC.s3o",
+		objectname = "Units/legavroc.s3o",
 		script = "Units/LEGAVROC_clean.cob",
 		seismicsignature = 0,
 		selfdestructas = "largeExplosionGenericSelfd",

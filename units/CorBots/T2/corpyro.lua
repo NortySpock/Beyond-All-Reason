@@ -21,7 +21,7 @@ return {
 		metalcost = 200,
 		movementclass = "BOT3",
 		nochasecategory = "VTOL",
-		objectname = "Units/CORPYRO.s3o",
+		objectname = "Units/corpyro.s3o",
 		script = "Units/corpyro.cob",
 		seismicsignature = 0,
 		selfdestructas = "pyroselfd",

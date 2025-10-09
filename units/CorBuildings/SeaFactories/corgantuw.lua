@@ -22,7 +22,7 @@ return {
 		metalcost = 8350,
 		metalstorage = 800,
 		minwaterdepth = 30,
-		objectname = "Units/CORGANT.s3o",
+		objectname = "Units/corgant.s3o",
 		script = "Units/corgant.cob",
 		seismicsignature = 0,
 		selfdestructas = "hugeBuildingExplosionGenericSelfd-uw",

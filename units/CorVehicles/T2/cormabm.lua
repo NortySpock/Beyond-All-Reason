@@ -26,7 +26,7 @@ return {
 		movestate = 0,
 		noautofire = true,
 		nochasecategory = "ALL",
-		objectname = "Units/CORMABM.s3o",
+		objectname = "Units/cormabm.s3o",
 		radardistance = 50,
 		script = "Units/cormabm.cob",
 		seismicsignature = 0,

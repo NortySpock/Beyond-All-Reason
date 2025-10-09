@@ -23,7 +23,7 @@ return {
 		maxwaterdepth = 15,
 		movementclass = "MTANK3",
 		nochasecategory = "VTOL",
-		objectname = "Units/LEGASKIRMTANK.s3o",
+		objectname = "Units/legaskirmtank.s3o",
 		script = "Units/LEGASKIRMTANK_clean.cob",
 		seismicsignature = 0,
 		selfdestructas = "largeExplosionGenericSelfd",

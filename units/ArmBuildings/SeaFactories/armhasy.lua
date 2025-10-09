@@ -22,7 +22,7 @@ return {
 		metalcost = 5000,
 		metalstorage = 800,
 		minwaterdepth = 30,
-		objectname = "Units/ARMHASY.s3o",
+		objectname = "Units/armhasy.s3o",
 		script = "Units/techsplit/ARMHASY.cob",
 		seismicsignature = 0,
 		selfdestructas = "hugeBuildingExplosionGenericSelfd-uw",

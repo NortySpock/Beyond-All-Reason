@@ -31,7 +31,7 @@ return {						--costs should be same as legmohocon and legmohoconin
 		maxslope = 10,
 		maxwaterdepth = 0,
 		movementclass = "NANO",
-		objectname = "Units/LEGMOHOCON.s3o",
+		objectname = "Units/legmohocon.s3o",
 		script = "Units/legmohoconct.cob",
 		seismicsignature = 0,
 		selfdestructas = "largeBuildingExplosionGenericSelfd",

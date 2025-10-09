@@ -43,7 +43,7 @@ return {
 		movementclass = "COMMANDERBOT",
 		movestate = 0,
 		nochasecategory = "ALL",
-		objectname = "Units/LEGCOM.s3o",
+		objectname = "Units/legcom.s3o",
 		radardistance = 700,
 		radaremitheight = 40,
 		reclaimable = false,

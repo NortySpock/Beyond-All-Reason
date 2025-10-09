@@ -23,7 +23,7 @@ return {
 		metalcost = 20000,
 		movementclass = "HBOT7",
 		nochasecategory = "VTOL",
-		objectname = "Units/CORJUGG.s3o",
+		objectname = "Units/corjugg.s3o",
 		script = "Units/corjugg.cob",
 		seismicsignature = 0,
 		selfdestructas = "juggernautSelfd",

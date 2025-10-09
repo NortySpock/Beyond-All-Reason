@@ -26,7 +26,7 @@ return {
 		minwaterdepth = 20,
 		movementclass = "UBOAT4",
 		nochase = "ALL",
-		objectname = "Units/CORDESOLATOR.s3o",
+		objectname = "Units/cordesolator.s3o",
 		radardistance = 50,
 		script = "Units/cordesolator.cob",
 		seismicsignature = 0,

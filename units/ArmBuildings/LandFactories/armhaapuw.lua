@@ -23,7 +23,7 @@ return {
 		minwaterdepth = 30,
 		metalcost = 1900,
 		metalstorage = 200,
-		objectname = "Units/ARMAAPLAT.s3o",
+		objectname = "Units/armaaplat.s3o",
 		radardistance = 1000,
 		radaremitheight = 50,
 		script = "Units/techsplit/ARMHAAPUW.cob",

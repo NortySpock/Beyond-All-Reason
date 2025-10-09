@@ -22,7 +22,7 @@ return {
 		maxwaterdepth = 22,
 		metalcost = 3800,
 		movementclass = "HBOT4",
-		objectname = "Units/ARMRAZ.s3o",
+		objectname = "Units/armraz.s3o",
 		script = "Units/armraz.cob",
 		seismicsignature = 0,
 		selfdestructas = "explosiont3xl",

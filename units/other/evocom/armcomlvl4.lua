@@ -45,7 +45,7 @@ return {
 		mincloakdistance = 50,
 		movementclass = "COMMANDERBOT",
 		nochasecategory = "ALL",
-		objectname = "Units/ARMCOMHILVL.s3o",
+		objectname = "Units/armcomhilvl.s3o",
 		radardistance = 1100,
 		radaremitheight = 40,
 		reclaimable = false,

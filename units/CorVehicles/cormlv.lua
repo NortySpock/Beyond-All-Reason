@@ -30,7 +30,7 @@ return {
 		metalcost = 65,
 		movementclass = "TANK2",
 		nochasecategory = "VTOL",
-		objectname = "Units/CORMLV.s3o",
+		objectname = "Units/cormlv.s3o",
 		radardistancejam = 64,
 		script = "Units/cormlv.cob",
 		seismicsignature = 0,

@@ -23,7 +23,7 @@ return {
 		metalcost = 2500,
 		movementclass = "HTBOT4",
 		nochasecategory = "VTOL",
-		objectname = "Units/CORKARG.s3o",
+		objectname = "Units/corkarg.s3o",
 		script = "Units/CORKARG.COB",
 		seismicsignature = 0,
 		selfdestructas = "explosiont3",

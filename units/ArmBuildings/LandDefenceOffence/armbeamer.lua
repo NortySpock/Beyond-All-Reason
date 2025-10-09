@@ -22,7 +22,7 @@ return {
 		maxslope = 10,
 		maxwaterdepth = 0,
 		metalcost = 190,
-		objectname = "Units/ARMBEAMER.s3o",
+		objectname = "Units/armbeamer.s3o",
 		script = "Units/armbeamer.cob",
 		seismicsignature = 0,
 		selfdestructas = "mediumBuildingExplosionGenericSelfd",

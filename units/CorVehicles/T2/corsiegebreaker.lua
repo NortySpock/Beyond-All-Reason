@@ -24,7 +24,7 @@ return {
 		maxvelocity = 1.8,
 		movementclass = "HTANK4",
 		nochasecategory = "VTOL GROUNDSCOUT",
-		objectname = "Units/CORSIEGEBREAKER.s3o",
+		objectname = "Units/corsiegebreaker.s3o",
 		script = "Units/corsiegebreaker.cob",
 		seismicsignature = 0,
 		selfdestructas = "mediumExplosionGenericSelfd-phib",

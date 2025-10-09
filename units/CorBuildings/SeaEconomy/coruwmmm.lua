@@ -22,7 +22,7 @@ return {
 		maxslope = 16,
 		metalcost = 370,
 		minwaterdepth = 15,
-		objectname = "Units/CORUWMMM.s3o",
+		objectname = "Units/coruwmmm.s3o",
 		script = "Units/coruwmmm.cob",
 		seismicsignature = 0,
 		selfdestructas = "hugeBuildingExplosionGenericSelfd",

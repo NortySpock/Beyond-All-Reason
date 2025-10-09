@@ -27,7 +27,7 @@ return {
 		speed = 93.0,
 		maxwaterdepth = 0,
 		nochasecategory = "VTOL",
-		objectname = "Units/LEGFORT.s3o",
+		objectname = "Units/legfort.s3o",
 		radardistance = 1000,
 		script = "Units/legfort.cob",
 		seismicsignature = 0,
