@@ -4,7 +4,7 @@ local maxErrors = 10
 
 function skip()
 	-- TODO: re-enable. disabled 2025-10-01 in order to get CICD working
-	return true
+	return false
 end
 
 
