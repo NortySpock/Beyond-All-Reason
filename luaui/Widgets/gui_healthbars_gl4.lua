@@ -327,6 +327,15 @@ local barTypeMap = { -- WHERE SHOULD WE STORE THE FUCKING COLORS?
 		uniformindex = 1, -- if its >20, then its health/maxhealth
 		uvoffset = 0.25, -- the X offset of the icon for this bar
 	},
+	stunshare = {
+		mincolor = {0.03, 0.4, 0.4, 1.0},
+		maxcolor = {0.05, 0.6, 0.6, 1.0},
+		--bartype = 2,
+		bartype = bitShowGlyph + bitUseOverlay + bitGetProgress,
+		hidethreshold = 0.99,
+		uniformindex = 2, -- and 3!
+		uvoffset = 0.6875, -- the X offset of the icon for this bar
+	},
 }
 
 for barname, bt in pairs(barTypeMap) do
@@ -382,6 +391,7 @@ local unitEmpDamagedWatch = {}
 local unitParalyzedWatch = {}
 local unitStockPileWatch = {}
 local unitReloadWatch = {}
+local unitStunShareWatch = {}
 
 local featureDefHeights = {} -- maps FeatureDefs to height
 local featureBars = {} -- we need this additional table of {[featureid] = {barhealth, barrez, barreclaim}}
@@ -754,6 +764,10 @@ local function addBarsForUnit(unitID, unitDefID, unitTeam, unitAllyTeam, reason)
 				end
 			end
 		end
+
+		if unitStunShareWatch[unitID] < Game.Frame then 
+			addBarForUnit(unitID, unitDefID, "stunshare", reason)
+		end
 	end
 end
 
@@ -768,6 +782,7 @@ local function removeBarsFromUnit(unitID, reason)
 	--unitBeingBuiltWatch[unitID] = nil
 	unitStockPileWatch[unitID] = nil
 	unitReloadWatch[unitID] = nil
+	unitStunShareWatch[unitID] = nil
 	unitBars[unitID] = nil
 end
 
@@ -848,6 +863,7 @@ local function init()
 	unitParalyzedWatch = {}
 	unitStockPileWatch = {}
 	unitReloadWatch = {}
+	unitStunShareWatch = {}
 	unitBars = {}
 	for i, unitID in ipairs(Spring.GetAllUnits()) do -- gets radar blips too!
 		-- probably shouldnt be adding non-visible units
@@ -1184,6 +1200,12 @@ function widget:GameFrame(n)
 				gl.SetUnitBufferUniforms(unitID, uniformcache, 2)
 			end
 		end
+	end
+
+	-- check shared units in stun mode 
+	-- no particular reason for this poll schedule, feel free to suggest better
+	if (GG['stunSharedUnits'].stunGadgetEnabled and (n % 4) == 0)  then
+		unitStunShareWatch = GG['stunSharedUnits'].exportStunnedUnitReleaseFrameTable		
 	end
 end
 

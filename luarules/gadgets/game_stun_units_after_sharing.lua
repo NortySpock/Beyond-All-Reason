@@ -66,21 +66,6 @@ if not gadgetHandler:IsSyncedCode() then
 end
 
 
-function gadget:Initialize()
-	Spring.Echo("stun unit gadget initialized")
-    gadgetHandler:RegisterAllowCommand(CMD.BUILD)
-
-		local registered = { [CMD.BUILD] = true }
-
-		for _, commandList in ipairs { CommandsToCatchMap, CommandsToCatchUnit, CommandsToCatchFeature } do
-			for command in pairs(commandList) do
-				if not registered[command] then
-					gadgetHandler:RegisterAllowCommand(command)
-					registered[command] = true
-				end
-			end
-		end
-end	
 
 -- TODO place affected units in the below list, removing units after their stun expires
 -- in theory we can use this list in the widget to show some sort of stun-bar / transfer bar over the unit.
@@ -88,7 +73,6 @@ end
 -- e.g. "-- bit 3: use timeleft style display 
 local DEBUG = true
 local stunnedUnitReleaseFrameTable = {} -- key unitID, value is the future gameFrame that the unit will be released
-local stunGadgetEnabled = true
 --(Spring.GetModOptions().stun_unit_after_sharing ~= "off" and tonumber(Spring.GetModOptions().stun_units_after_transfer_duration_seconds) > 0)
 
 -- intercepts unit transfer and forces the injection of a wait command for a certain time
@@ -215,3 +199,35 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdO
     return allowed
     
 end
+
+function gadget:exportStunnedUnitReleaseFrameTable()
+    -- not entirely sure I understand how gadget enablement works, so for now we're just returning early if we suspect we might be off
+    if (not stunGadgetEnabled) then 
+        return {}
+    end
+ 
+    return stunnedUnitReleaseFrameTable    
+end
+
+
+function gadget:stunGadgetEnabled()
+    return stunGadgetEnabled
+end
+
+function gadget:Initialize()
+	Spring.Echo("stun unit gadget initialized")
+    gadgetHandler:RegisterAllowCommand(CMD.BUILD)
+    
+    local registered = { [CMD.BUILD] = true }
+    local stunGadgetEnabled = true
+    GG['stunSharedUnits'].stunGadgetEnabled = stunGadgetEnabled
+
+    for _, commandList in ipairs { CommandsToCatchMap, CommandsToCatchUnit, CommandsToCatchFeature } do
+        for command in pairs(commandList) do
+            if not registered[command] then
+                gadgetHandler:RegisterAllowCommand(command)
+                registered[command] = true
+            end
+        end
+    end
+end	
