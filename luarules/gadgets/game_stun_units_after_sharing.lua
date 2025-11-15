@@ -50,7 +50,9 @@ local CommandsToCatchFeature = { -- CMDTYPES: ICON_UNIT_FEATURE_OR_AREA
 }
 
 local CommandsToClearQueue = { -- CMDTYPES: ICON_UNIT_FEATURE_OR_AREA
-	[CMD.STOP] = true
+	[CMD.STOP] = true,
+    [CMD.INSERT] = true,
+    [CMD.WAIT] = true
 }
 
 
@@ -119,7 +121,7 @@ function gadget:AllowUnitTransfer(unitID, _, _, _, wasCaptured)
    end
     Spring.GiveOrderToUnit(unitID,
      CMD.INSERT,
-     {0,CMD.TIMEWAIT,CMD.OPT_SHIFT,inputStunSeconds}
+     {0,CMD.WAIT,CMD.OPT_SHIFT}
    );
    if DEBUG then 
      local newQueue = Spring.GetCommandQueue(unitID, -1)
@@ -200,19 +202,8 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdO
     
 end
 
-function gadget:exportStunnedUnitReleaseFrameTable()
-    -- not entirely sure I understand how gadget enablement works, so for now we're just returning early if we suspect we might be off
-    if (not stunGadgetEnabled) then 
-        return {}
-    end
  
-    return stunnedUnitReleaseFrameTable    
-end
-
-
-function gadget:stunGadgetEnabled()
-    return stunGadgetEnabled
-end
+ 
 
 function gadget:Initialize()
 	Spring.Echo("stun unit gadget initialized")
@@ -220,7 +211,18 @@ function gadget:Initialize()
     
     local registered = { [CMD.BUILD] = true }
     local stunGadgetEnabled = true
-    GG['stunSharedUnits'].stunGadgetEnabled = stunGadgetEnabled
+    GG.stunSharedUnits = GG.stunSharedUnits or {}
+    GG.stunSharedUnits.stunGadgetEnabled = function() 
+         return stunGadgetEnabled
+    end
+
+    GG.stunSharedUnits.exportStunnedUnitReleaseFrameTable = function() 
+        if (not stunGadgetEnabled) then 
+            return {}
+        end
+ 
+        return stunnedUnitReleaseFrameTable   
+    end
 
     for _, commandList in ipairs { CommandsToCatchMap, CommandsToCatchUnit, CommandsToCatchFeature } do
         for command in pairs(commandList) do
