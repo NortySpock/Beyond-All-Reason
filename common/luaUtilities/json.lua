@@ -242,7 +242,7 @@ do
 		tt_comment_start,
 		tt_comment_middle,
 		tt_ignore --< tt_ignore is special - marked tokens will be tt_ignored
-			= {},{},{},{},{},{},{},{},{},{},{},{},{},{}
+			= {},{},{},{},{},{},{},{},{},{},{},{},{}
 			--= {myname = "tt_object_key"},{myname = "tt_object_colon"},{myname = "tt_object_value"},{myname = "tt_doublequote_string"},{myname = "tt_singlequote_string"},{myname = "tt_array_value"},{myname = "tt_array_separator"},{myname = "tt_numeric"},{myname = "tt_boolean"},{myname = "tt_null"},{myname = "tt_comment_start"},{myname = "tt_comment_middle"},{myname = "tt_ignore"}
 	
 	-- strings to be used in certain token tables
