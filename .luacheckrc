@@ -11,11 +11,18 @@ codes = true
 redefined = false
 
 ignore = {
+    "011", -- TODO: invalid escape sequence
+    "511", -- TODO: unreachable code
     "512", -- Loop can be executed at most once.
 
+    "531", -- TODO: right side of assignment has more values than left side expects
+    "541", -- TODO: empty do..end block
     "542", -- TODO: empty if branch
+    "581", -- overly specific rule:  'not (x == y)' can be replaced by 'x ~= y'
+    "582", -- TODO: Error prone negation: negation is executed before relational operator.
     "611", -- TODO: line contains only whitespace
     "612", -- TODO: line contains trailing whitespace
+    "613", -- TODO: line contains trailing whitespace inside a string
     "614", -- TODO: trailing whitespace in a comment
     "621", -- TODO: inconsistent indentation
 }
@@ -25,6 +32,7 @@ ignore = {
 
 -- Default is probably fine, but anyway
 std=lua51
+quiet = 1
 
 globals = {
     -- std extensions
@@ -50,4 +58,8 @@ globals = {
     -- "LCS", "Path", "Table", "Log", "String", "Shaders", "Time", "Array", "StartScript",
 
     "CMDTYPE", "COBSCALE", "CallAsTeam", "SYNCED", "loadlib",
+}
+
+exclude_files = {
+    ".git/**/*",
 }
