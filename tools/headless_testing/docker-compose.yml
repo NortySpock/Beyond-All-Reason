@@ -9,6 +9,7 @@ services:
       - ../..:/bar/games/BAR.sdd:ro
       - ../../../../LuaUI/Widgets:/bar/LuaUI/Widgets:ro
       - ./testlog:/bar/testlog:rw
+      - ./demos:/bar/demos:rw
       - cache:/bar/cache:rw
 
 volumes:
