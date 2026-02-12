@@ -5,6 +5,8 @@ end
 function setup()
 	Test.clearMap()
 	-- Enable UnitCommand callin for tests
+
+	
 	Test.expectCallin("UnitCommand")
 end
 
@@ -20,37 +22,32 @@ local function runDgunRangeTest(commanderName, range)
 	
 	-- Spawn Commander
 	local comID = SyncedRun(function(locals)
-		local y = Spring.GetGroundHeight(locals.x, locals.z)
-		return Spring.CreateUnit(locals.name, locals.x, y, locals.z, 0, locals.teamID)
-	end, { name = commanderName, x = midX, z = midZ, teamID = myTeamID })
-
-	-- Wait for unit to exist
-	Test.waitFrames(1)
-
+		local y = Spring.GetGroundHeight(locals.midX, locals.midZ)
+		return Spring.CreateUnit(locals.commanderName, locals.midX, y, locals.midZ, 0, locals.myTeamID)
+	end)
+	
 	-- Spawn target units: one just inside max range, one just outside
-	local targetInsideX = midX + range - 5
-	local targetOutsideX = midX + range + 10 -- bit more buffer for the splash logic
+	local targetInsideX = midX + range - 50
+	local targetOutsideX = midX - range - 10 -- opposite side
 
 	local targetInsideID = SyncedRun(function(locals)
-		local y = Spring.GetGroundHeight(locals.x, locals.z)
-		return Spring.CreateUnit("armsolar", locals.x, y, locals.z, 0, locals.teamID)
-	end, { x = targetInsideX, z = midZ, teamID = enemyTeamID })
+		local y = Spring.GetGroundHeight(locals.targetInsideX, locals.midZ)
+		return Spring.CreateUnit("armsolar", locals.targetInsideX, y, locals.midZ, 0, locals.enemyTeamID)
+	end)
 
 	local targetOutsideID = SyncedRun(function(locals)
-		local y = Spring.GetGroundHeight(locals.x, locals.z)
-		return Spring.CreateUnit("armsolar", locals.x, y, locals.z, 0, locals.teamID)
-	end, { x = targetOutsideX, z = midZ, teamID = enemyTeamID })
+		local y = Spring.GetGroundHeight(locals.targetOutsideX, locals.midZ)
+		return Spring.CreateUnit("armsolar", locals.targetOutsideX, y, locals.midZ, 0, locals.enemyTeamID)
+	end)
 
 	Test.waitFrames(1)
 
-	-- Force dgun order to a point far away to ensure it travels its full distance
-	-- CMD.MANUALFIRE (D-Gun)
-	local targetDgunX = midX + range + 100
+	local targetDgunX = targetInsideX
 	Spring.GiveOrderToUnit(comID, CMD.MANUALFIRE, { targetDgunX, 0, midZ }, 0)
 
 	-- Wait enough frames for projectile to travel (velocity is 300, distance is ~300, so ~1-2 seconds)
 	-- 60 frames = 2 seconds at 30 fps
-	Test.waitFrames(60)
+	Test.waitFrames(120)
 
 	-- Verify results: inside unit should be gone, outside unit should be alive
 	local isInsideAlive = Spring.ValidUnitID(targetInsideID)
@@ -62,9 +59,9 @@ local function runDgunRangeTest(commanderName, range)
 	-- Cleanup this run
 	SyncedRun(function(locals)
 		Spring.DestroyUnit(locals.comID, false, true)
-		if Spring.ValidUnitID(locals.t1) then Spring.DestroyUnit(locals.t1, false, true) end
-		if Spring.ValidUnitID(locals.t2) then Spring.DestroyUnit(locals.t2, false, true) end
-	end, { comID = comID, t1 = targetInsideID, t2 = targetOutsideID })
+		if Spring.ValidUnitID(locals.targetInsideID) then Spring.DestroyUnit(locals.targetInsideID, false, true) end
+		if Spring.ValidUnitID(locals.targetOutsideID) then Spring.DestroyUnit(locals.targetOutsideID, false, true) end
+	end)
 end
 
 function test() 
