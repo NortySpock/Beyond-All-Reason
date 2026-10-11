@@ -126,6 +126,45 @@ describe("role_cycle", function()
 	it("starts from the last preset when cycling backward with no role", function()
 		assert.equals("tech", tool.cyclePositionRole(1, -1, presets))
 	end)
+
+	it("undoes and redoes a role change", function()
+		tool.activate()
+		tool.setSubMode("roles")
+		assert.equals("front", tool.cyclePositionRole(1, 1, presets))
+		-- Ctrl+Z: undo the role change.
+		assert.is_true(env.widget.KeyPress(122, { ctrl = true }, false))
+		assert.is_nil(tool.getState().positions[1].role)
+		-- Ctrl+Shift+Z: redo it.
+		assert.is_true(env.widget.KeyPress(122, { ctrl = true, shift = true }, false))
+		assert.equals("front", tool.getState().positions[1].role)
+	end)
+
+	it("redo after a new action is a no-op, not the stale undone entry", function()
+		-- Undo a role change, then make a different role change; redo must be a
+		-- no-op, not re-apply the undone entry. This is the regression test for
+		-- the redo stack not being cleared on new role actions.
+		tool.activate()
+		tool.setSubMode("roles")
+		assert.equals("front", tool.cyclePositionRole(1, 1, presets))
+		assert.is_true(env.widget.KeyPress(122, { ctrl = true }, false))
+		assert.is_nil(tool.getState().positions[1].role)
+		assert.equals("air", tool.cyclePositionRole(1, 1, presets))
+		assert.is_true(env.widget.KeyPress(122, { ctrl = true, shift = true }, false))
+		-- With the bug, the stale entry (nil -> "front") is applied and the role
+		-- becomes "front" again; after the fix redo is a no-op and the role stays "air".
+		assert.equals("air", tool.getState().positions[1].role)
+	end)
+
+	it("position undo has no redo", function()
+		-- express mode is the default.
+		assert.equals(1, #tool.getState().positions)
+		-- Ctrl+Z: undo the placement.
+		assert.is_true(env.widget.KeyPress(122, { ctrl = true }, false))
+		assert.equals(0, #tool.getState().positions)
+		-- Ctrl+Shift+Z: redo is a no-op for positions (returns false).
+		assert.is_false(env.widget.KeyPress(122, { ctrl = true, shift = true }, false))
+		assert.equals(0, #tool.getState().positions)
+	end)
 end)
 
 describe("startbox_encode", function()

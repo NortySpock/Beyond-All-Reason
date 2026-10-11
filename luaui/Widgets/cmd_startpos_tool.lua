@@ -557,7 +557,14 @@ function roleConfig.cyclePositionRole(idx, direction, roleOptions)
 	if not pos then
 		return nil
 	end
+	local prevRole = pos.role
 	pos.role = RoleCycle.nextRole(pos.role, direction, roleOptions or roleConfig.options)
+	undoHistory[#undoHistory + 1] = {
+		mode = "roles",
+		idx = idx,
+		prevRole = prevRole,
+		nextRole = pos.role,
+	}
 	return pos.role
 end
 
@@ -2908,20 +2915,26 @@ function widget:KeyPress(key, mods, isRepeat)
 
 	-- Ctrl+Z undoes, Ctrl+Shift+Z redoes: the editor's convention (the clone tool and the
 	-- terraform brush bind redo the same way). Only entries from the current submode are
-	-- eligible: positions and startboxes coexist, so undoing in one submode must not
-	-- silently rewind the other.
+	-- eligible: positions, shapes, startboxes and roles share the same history, so
+	-- undoing in one submode must not silently rewind another.
 	if key == 122 and mods.ctrl then -- 122 = 'z'
 		local isUndo = not mods.shift
 		local fromStack = isUndo and undoHistory or boxUndo.redo
 		local toStack = isUndo and boxUndo.redo or undoHistory
 		local at
+		-- Find the most recent entry whose mode matches the current submode.
+		-- undoHistory is mixed (all submodes), so we scan for a matching mode;
+		-- boxUndo.redo holds undone entries, but only startbox mirrors and roles
+		-- are actually redoable — position/shape entries are discarded on redo.
 		for i = #fromStack, 1, -1 do
-			if (fromStack[i].mode or "express") == subMode then
+			local m = fromStack[i].mode or "express"
+			if m == subMode then
 				at = i
 				break
 			end
 		end
 		if not at then
+			-- No entry for this submode in this stack: nothing to undo/redo.
 			return true
 		end
 
@@ -2931,19 +2944,31 @@ function widget:KeyPress(key, mods, isRepeat)
 			return true
 		end
 		if entry.mode == "startbox" then
-			table.insert(toStack, boxUndo.apply(entry))
-		else
-			-- Positions rewind by count, the way they always have; the counter pair is
-			-- restored from the snapshot rather than guessed at.
-			for _ = 1, (entry.count or 0) do
-				if #positions > 0 then
-					positions[#positions] = nil
-				end
-			end
-			nextAllyTeam = entry.prevNextAllyTeam or 1
-			nextTeamSlot = entry.prevNextTeamSlot or 1
+            table.insert(toStack, boxUndo.apply(entry))
+			return true
 		end
+        if entry.mode == "roles" and entry.idx then
+            local p = positions[entry.idx]
+            if p then p.role = isUndo and entry.prevRole or entry.nextRole end
+            table.insert(toStack, entry)
+            return true
+        end
 
+        -- the remaining code is for positions / express, and it does not currently support redo
+        -- so it is safer to do nothing and report failure if a redo cannot be performed
+		if not isUndo then
+			return false
+		end
+        -- Positions rewind by count, the way they always have; the counter pair is
+        -- restored from the snapshot rather than guessed at.
+        for _ = 1, (entry.count or 0) do
+            if #positions > 0 then
+                positions[#positions] = nil
+            end
+        end
+        nextAllyTeam = entry.prevNextAllyTeam or 1
+        nextTeamSlot = entry.prevNextTeamSlot or 1
+        table.insert(toStack, entry)
 		return true
 	end
 	return false
